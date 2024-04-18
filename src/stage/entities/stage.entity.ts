@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Lid } from "src/lid/entities/lid.entity";
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
 export class Stage {
@@ -7,4 +8,8 @@ export class Stage {
 
     @Column()
     name:string
+
+    @OneToMany(()=>Lid,(data)=>data.stage_id)
+    stages:Lid[]
+
 }

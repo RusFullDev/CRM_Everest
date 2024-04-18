@@ -10,8 +10,7 @@ export class StageService {
   constructor(@InjectRepository(Stage) private stageRepo:Repository<Stage>){}
 
   create(createStageDto: CreateStageDto) {
-    const{name} = createStageDto
-    return this.stageRepo.save({name})
+     return this.stageRepo.save(createStageDto)
   }
 
   findAll() {

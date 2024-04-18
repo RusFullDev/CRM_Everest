@@ -10,12 +10,18 @@ export class LidStatusService {
   constructor(@InjectRepository(LidStatus) private lidStatusRepo:Repository<LidStatus>){}
 
   create(createLidStatusDto: CreateLidStatusDto) {
-    const{status} = createLidStatusDto
-    return this.lidStatusRepo.save({status})
+    return this.lidStatusRepo.save(createLidStatusDto)
   }
 
   findAll() {
-    return this.lidStatusRepo.find()
+    return this.lidStatusRepo.find({
+      relations:{
+      lidStatus:true
+      },
+      select:{
+        
+      }
+    })
   }
 
   findOne(id: number) {

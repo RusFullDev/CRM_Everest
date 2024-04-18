@@ -9,8 +9,7 @@ import { Repository } from 'typeorm';
 export class TargetService {
   constructor(@InjectRepository(Target) private targetRepo:Repository<Target>){}
   create(createTargetDto: CreateTargetDto) {
-    const {name} = createTargetDto
-    return this.targetRepo.save({name})
+     return this.targetRepo.save(createTargetDto)
   }
 
   findAll() {

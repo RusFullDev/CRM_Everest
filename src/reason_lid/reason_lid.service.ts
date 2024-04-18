@@ -10,8 +10,7 @@ export class ReasonLidService {
 
   constructor(@InjectRepository(ReasonLid) private reasonLidRepo :Repository<ReasonLid>){}
   create(createReasonLidDto: CreateReasonLidDto) {
-    const{reason_lid} = createReasonLidDto
-    return this.reasonLidRepo.save({reason_lid})
+        return this.reasonLidRepo.save(createReasonLidDto)
   }
 
   findAll() {
