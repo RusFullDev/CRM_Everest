@@ -8,15 +8,26 @@ import { Repository } from 'typeorm';
 @Injectable()
 export class LidService {
   constructor(@InjectRepository(Lid) private lidRepo:Repository<Lid>){}
-  create(createLidDto: CreateLidDto) {
-    const{ first_name,last_name,phone_number,target_id,lid_stage_id,test_date,trial_lesson_date,
-      trial_lesson_time,trial_lesson_group_id,lid_status_id,cancel_reson_id}= createLidDto
-    return this.lidRepo.save({ first_name,last_name,phone_number,target_id,lid_stage_id,test_date,trial_lesson_date,
-      trial_lesson_time,trial_lesson_group_id,lid_status_id,cancel_reson_id})
+  create(createLidDto) {
+  return this.lidRepo.save(createLidDto)
   }
 
   findAll() {
-    return this.lidRepo.find()
+    return this.lidRepo.find({
+      relations:{
+        lid_status_id:true,
+        reason_lid_id:true,
+        stage_id:true,
+        target_id:true
+      }
+      ,
+      // select:{
+      //   first_name:true,
+      //   lid_status_id:{
+      //     status:true
+      //   }
+      // }
+    })
   }
 
   findOne(id: number) {
