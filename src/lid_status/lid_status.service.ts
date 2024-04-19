@@ -17,10 +17,7 @@ export class LidStatusService {
     return this.lidStatusRepo.find({
       relations:{
       lidStatus:true
-      },
-      select:{
-        
-      }
+      }    
     })
   }
 

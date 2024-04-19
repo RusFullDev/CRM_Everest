@@ -14,7 +14,7 @@ export class ReasonLidService {
   }
 
   findAll() {
-    return this.reasonLidRepo.find()
+    return this.reasonLidRepo.find({relations:{reasons_lid:true}})
   }
 
   findOne(id: number) {

@@ -11,6 +11,12 @@ import { LidModule } from './lid/lid.module';
 import { Stage } from './stage/entities/stage.entity';
 import { Target } from './target/entities/target.entity';
 import { Lid } from './lid/entities/lid.entity';
+import { RoleModule } from './role/role.module';
+import { StuffModule } from './stuff/stuff.module';
+import { StuffRoleModule } from './stuff_role/stuff_role.module';
+import { Role } from './role/entities/role.entity';
+import { Stuff } from './stuff/entities/stuff.entity';
+import { StuffRole } from './stuff_role/entities/stuff_role.entity';
 
 
 @Module({
@@ -24,13 +30,16 @@ import { Lid } from './lid/entities/lid.entity';
   database: process.env.PG_DB,
   host: process.env.PG_HOST,
   synchronize: true,
-  entities: [LidStatus,ReasonLid,Stage,Target,Lid],
+  entities: [LidStatus,ReasonLid,Stage,Target,Lid,Role,Stuff,StuffRole],
     }),
    LidStatusModule,
    ReasonLidModule,
    StageModule,
    TargetModule,
-   LidModule
+   LidModule,
+   RoleModule,
+   StuffModule,
+   StuffRoleModule
   ],
   controllers: [],
   providers: [],
