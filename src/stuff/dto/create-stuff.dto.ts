@@ -4,5 +4,7 @@ export class CreateStuffDto {
     phone_number:string
     login:string
     parol:string
+    confirm_parol:string
+    role:string
     
 }

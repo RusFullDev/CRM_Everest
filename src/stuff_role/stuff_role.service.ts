@@ -14,7 +14,7 @@ export class StuffRoleService {
   }
 
   findAll() {
-    return this.stuffRoleRepo.find({relations:{}})
+    return this.stuffRoleRepo.find({relations:{roleId:true,stuffId:true},select:{id:false}})
   }
 
   findOne(id: number) {

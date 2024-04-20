@@ -8,8 +8,8 @@ export class StuffRole {
     id:number
 
     @ManyToOne((type)=>Role,(data)=>data.stuffes)
-    roleId:number
+    roleId:Role
 
     @ManyToOne((type)=>Stuff,(data)=>data.first_name)
-    stuffId:number
+    stuffId:Stuff
 }

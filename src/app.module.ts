@@ -17,6 +17,17 @@ import { StuffRoleModule } from './stuff_role/stuff_role.module';
 import { Role } from './role/entities/role.entity';
 import { Stuff } from './stuff/entities/stuff.entity';
 import { StuffRole } from './stuff_role/entities/stuff_role.entity';
+import { BranchModule } from './branch/branch.module';
+import { GroupStuffModule } from './group_stuff/group_stuff.module';
+import { GroupModule } from './group/group.module';
+import { LessonModule } from './lesson/lesson.module';
+import { StudentGroupModule } from './student_group/student_group.module';
+import { StudentLessonModule } from './student_lesson/student_lesson.module';
+import { StudentsModule } from './students/students.module';
+import { PaymentModule } from './payment/payment.module';
+import { Branch } from './branch/entities/branch.entity';
+import { Group } from './group/entities/group.entity';
+import { GroupStuff } from './group_stuff/entities/group_stuff.entity';
 
 
 @Module({
@@ -30,7 +41,7 @@ import { StuffRole } from './stuff_role/entities/stuff_role.entity';
   database: process.env.PG_DB,
   host: process.env.PG_HOST,
   synchronize: true,
-  entities: [LidStatus,ReasonLid,Stage,Target,Lid,Role,Stuff,StuffRole],
+  entities: [LidStatus,ReasonLid,Stage,Target,Lid,Role,Stuff,StuffRole,Branch,Group,GroupStuff],
     }),
    LidStatusModule,
    ReasonLidModule,
@@ -39,7 +50,15 @@ import { StuffRole } from './stuff_role/entities/stuff_role.entity';
    LidModule,
    RoleModule,
    StuffModule,
-   StuffRoleModule
+   StuffRoleModule,
+   BranchModule,
+   GroupStuffModule,
+   GroupModule,
+   LessonModule,
+   StudentGroupModule,
+   StudentLessonModule,
+   StudentsModule,
+   PaymentModule
   ],
   controllers: [],
   providers: [],

@@ -11,6 +11,10 @@ export class Role {
     @Column()
     name:string
 
-    @OneToMany(() => StuffRole,(data)=>data.roleId)
+    @OneToMany((type) => StuffRole,(data)=>data.roleId)
     stuffes: StuffRole[]
+
+    // @ManyToMany(() => Stuff,(data)=>data.roles,{cascade:true})
+    // @JoinTable()
+    // stuffs: Stuff[]
 }
