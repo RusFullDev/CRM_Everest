@@ -21,11 +21,13 @@ export class ReasonLidService {
     return this.reasonLidRepo.findOneBy({id})
   }
 
-  update(id: number, updateReasonLidDto: UpdateReasonLidDto) {
-    return this.reasonLidRepo.update({id},updateReasonLidDto)
+ async  update(id: number, updateReasonLidDto: UpdateReasonLidDto) {
+    await this.reasonLidRepo.update({id},updateReasonLidDto)
+    return this.findOne(id)
   }
 
-  remove(id: number) {
-    return this.reasonLidRepo.delete({id})  
+  async remove(id: number) {
+   await this.reasonLidRepo.delete({id})  
+   return id
   }
 }

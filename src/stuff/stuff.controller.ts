@@ -48,10 +48,6 @@ export class StuffController {
     return this.stuffService.refreshToken(+id, refreshToken, res);
   }
 
-
-
-
-
   @Get()
   findAll() {
     return this.stuffService.findAll();

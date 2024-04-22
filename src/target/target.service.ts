@@ -20,11 +20,13 @@ export class TargetService {
     return this.targetRepo.findOneBy({id})
   }
 
-  update(id: number, updateTargetDto: UpdateTargetDto) {
-    return this.targetRepo.update({id},updateTargetDto)
+  async update(id: number, updateTargetDto: UpdateTargetDto) {
+    await this.targetRepo.update({id},updateTargetDto)
+    return this.findOne(id)
   }
 
-  remove(id: number) {
-    return this.targetRepo.delete({id})
+  async remove(id: number) {
+   await this.targetRepo.delete({id})
+   return id
   }
 }

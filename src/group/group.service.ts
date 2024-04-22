@@ -15,7 +15,12 @@ export class GroupService {
   }
 
   findAll() {
-    return this.groupRepo.find({relations:{branch_id:true,group_stage_id:true,groupStuffs:true}})
+    return this.groupRepo.find(
+      {relations:
+      {branch_id:true,group_stage_id:true,
+        groupStuffs:true,lessons:true,studentGroup:true}
+      }
+    )
   }
 
   findOne(id: number) {

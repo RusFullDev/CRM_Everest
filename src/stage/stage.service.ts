@@ -21,11 +21,13 @@ export class StageService {
     return this.stageRepo.findOneBy({id})
   }
 
-  update(id: number, updateStageDto: UpdateStageDto) {
-    return this.stageRepo.update({id},updateStageDto)
+ async update(id: number, updateStageDto: UpdateStageDto) {
+    await this.stageRepo.update({id},updateStageDto)
+    return this.findOne(id)
   }
 
-  remove(id: number) {
-    return this.stageRepo.delete({id})
+  async remove(id: number) {
+    await this.stageRepo.delete({id})
+    return id
   }
 }

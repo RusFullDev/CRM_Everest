@@ -7,8 +7,10 @@ import { Repository } from 'typeorm';
 
 @Injectable()
 export class LidService {
+  
   constructor(@InjectRepository(Lid) private lidRepo:Repository<Lid>){}
-  create(createLidDto) {
+
+  create(createLidDto:CreateLidDto) {
   return this.lidRepo.save(createLidDto)
   }
 
@@ -18,7 +20,9 @@ export class LidService {
         lid_status_id:true,
         reason_lid_id:true,
         stage_id:true,
-        target_id:true
+        target_id:true,
+        students:true
+
       }
       ,
       // select:{
@@ -34,11 +38,13 @@ export class LidService {
     return this.lidRepo.findOneBy({id})
   }
 
-  update(id: number, updateLidDto: UpdateLidDto) {
-    return this.lidRepo.update({id},updateLidDto)
+  async update(id: number, updateLidDto: UpdateLidDto) {
+    await this.lidRepo.update({id},updateLidDto)
+    return this.findOne(id)
   }
 
-  remove(id: number) {
-    return this.lidRepo.delete({id})
+  async remove(id: number) {
+    await this.lidRepo.delete({id})
+    return id
   }
 }

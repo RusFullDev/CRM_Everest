@@ -25,11 +25,13 @@ export class LidStatusService {
     return this.lidStatusRepo.findOneBy({id})
   }
 
-  update(id: number, updateLidStatusDto: UpdateLidStatusDto) {
-    return this.lidStatusRepo.update({id},updateLidStatusDto)
+  async update(id: number, updateLidStatusDto: UpdateLidStatusDto) {
+    await this.lidStatusRepo.update({id},updateLidStatusDto)
+    return this.findOne(id)
   }
 
-  remove(id: number) {
-    return this.lidStatusRepo.delete({id})
+ async remove(id: number) {
+    await this.lidStatusRepo.delete({id})
+    return id
   }
 }

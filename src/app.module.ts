@@ -28,6 +28,11 @@ import { PaymentModule } from './payment/payment.module';
 import { Branch } from './branch/entities/branch.entity';
 import { Group } from './group/entities/group.entity';
 import { GroupStuff } from './group_stuff/entities/group_stuff.entity';
+import { Lesson } from './lesson/entities/lesson.entity';
+import { StudentGroup } from './student_group/entities/student_group.entity';
+import { Student } from './students/entities/student.entity';
+import { StudentLesson } from './student_lesson/entities/student_lesson.entity';
+import { Payment } from './payment/entities/payment.entity';
 
 
 @Module({
@@ -41,7 +46,8 @@ import { GroupStuff } from './group_stuff/entities/group_stuff.entity';
   database: process.env.PG_DB,
   host: process.env.PG_HOST,
   synchronize: true,
-  entities: [LidStatus,ReasonLid,Stage,Target,Lid,Role,Stuff,StuffRole,Branch,Group,GroupStuff],
+  entities: [LidStatus,ReasonLid,Stage,Target,Lid,Role,Stuff,
+    StuffRole,Branch,Group,GroupStuff,Lesson,StudentGroup,Student,StudentLesson,Payment],
     }),
    LidStatusModule,
    ReasonLidModule,

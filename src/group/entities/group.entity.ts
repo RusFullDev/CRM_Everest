@@ -1,6 +1,8 @@
 import { Branch } from "src/branch/entities/branch.entity";
 import { GroupStuff } from "src/group_stuff/entities/group_stuff.entity";
+import { Lesson } from "src/lesson/entities/lesson.entity";
 import { Stage } from "src/stage/entities/stage.entity";
+import { StudentGroup } from "src/student_group/entities/student_group.entity";
 import { Column, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
@@ -35,5 +37,9 @@ export class Group {
 
     @OneToMany(()=>GroupStuff,(data)=>data.group_id)
     groupStuffs:GroupStuff[]
+    @OneToMany(()=>Lesson,(data)=>data.group_id)
+    lessons:Lesson[]
+    @OneToMany(()=>StudentGroup,(data)=>data.group_id)
+    studentGroup:StudentGroup[]
 
 }

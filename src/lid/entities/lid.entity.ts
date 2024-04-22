@@ -1,8 +1,9 @@
 import { LidStatus } from "src/lid_status/entities/lid_status.entity";
 import { ReasonLid } from "src/reason_lid/entities/reason_lid.entity";
 import { Stage } from "src/stage/entities/stage.entity";
+import { Student } from "src/students/entities/student.entity";
 import { Target } from "src/target/entities/target.entity";
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
 export class Lid {
@@ -41,4 +42,7 @@ export class Lid {
     
     @ManyToOne(()=>ReasonLid,(data)=>data.reasons_lid)
     reason_lid_id:ReasonLid
+    
+    @OneToMany(()=>Student,(data)=>data.lid_id)
+    students:Student[]
 }
