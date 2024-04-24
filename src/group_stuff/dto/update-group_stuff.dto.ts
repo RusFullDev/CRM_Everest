@@ -1,4 +1,10 @@
-import { PartialType } from '@nestjs/mapped-types';
-import { CreateGroupStuffDto } from './create-group_stuff.dto';
 
-export class UpdateGroupStuffDto extends PartialType(CreateGroupStuffDto) {}
+import { Field, ObjectType } from "@nestjs/graphql"
+
+@ObjectType()
+export class UpdateGroupStuffDto {
+    @Field()
+    group_id?:object
+    @Field()
+    stuff_id?:object
+}

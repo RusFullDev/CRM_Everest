@@ -33,11 +33,19 @@ import { StudentGroup } from './student_group/entities/student_group.entity';
 import { Student } from './students/entities/student.entity';
 import { StudentLesson } from './student_lesson/entities/student_lesson.entity';
 import { Payment } from './payment/entities/payment.entity';
+import { GraphQLModule } from '@nestjs/graphql';
+import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 
 
 @Module({
   imports: [
     ConfigModule.forRoot({ envFilePath: '.env', isGlobal: true }),
+    GraphQLModule.forRoot<ApolloDriverConfig>({
+      driver:ApolloDriver,
+      autoSchemaFile:'schema.gql',
+      sortSchema:true,
+      playground:true
+    }),
    TypeOrmModule.forRoot({
   type:"postgres",
    port: Number(process.env.PG_PORT),
@@ -45,9 +53,13 @@ import { Payment } from './payment/entities/payment.entity';
   password: process.env.PG_PASSWORD,
   database: process.env.PG_DB,
   host: process.env.PG_HOST,
-  synchronize: true,
-  entities: [LidStatus,ReasonLid,Stage,Target,Lid,Role,Stuff,
-    StuffRole,Branch,Group,GroupStuff,Lesson,StudentGroup,Student,StudentLesson,Payment],
+  entities:[__dirname+'dist/**/*.entity{.ts,.js}'],
+        synchronize:true,
+        autoLoadEntities:true,
+        logging:true
+  // synchronize: true,
+  // entities: [LidStatus,ReasonLid,Stage,Target,Lid,Role,Stuff,
+  //   StuffRole,Branch,Group,GroupStuff,Lesson,StudentGroup,Student,StudentLesson,Payment],
     }),
    LidStatusModule,
    ReasonLidModule,

@@ -15,7 +15,9 @@ export class RoleService {
   }
 
   findAll() {
-    return this.roleRero.find({relations:{stuffes:true}})
+    return this.roleRero.find({relations:{stuffes:{
+      roleId:true
+    }}})
   }
 
   findOne(id: number) {

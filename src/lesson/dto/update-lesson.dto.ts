@@ -1,4 +1,19 @@
-import { PartialType } from '@nestjs/mapped-types';
-import { CreateLessonDto } from './create-lesson.dto';
 
-export class UpdateLessonDto extends PartialType(CreateLessonDto) {}
+
+import { Field, ObjectType } from "@nestjs/graphql"
+
+@ObjectType()
+export class UpdateLessonDto {
+    
+    @Field()
+    lesson_theme?:string
+
+    @Field()
+    lesson_number?:number
+
+    @Field()
+    group_id?:object
+
+    @Field()
+    lesson_date?:Date
+}

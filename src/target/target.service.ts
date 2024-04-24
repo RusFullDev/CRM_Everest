@@ -13,7 +13,7 @@ export class TargetService {
   }
 
   findAll() {
-    return this.targetRepo.find({relations:{targets:true}})
+    return this.targetRepo.find()
   }
 
   findOne(id: number) {

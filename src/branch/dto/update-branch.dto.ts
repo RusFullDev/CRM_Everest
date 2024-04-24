@@ -1,4 +1,12 @@
-import { PartialType } from '@nestjs/mapped-types';
-import { CreateBranchDto } from './create-branch.dto';
 
-export class UpdateBranchDto extends PartialType(CreateBranchDto) {}
+import { Field, ObjectType } from "@nestjs/graphql"
+
+@ObjectType()
+export class UpdateBranchDto {
+    @Field()
+    name?:string
+    @Field()
+    address?:string
+    @Field()
+    call_number?:string
+}

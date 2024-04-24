@@ -21,7 +21,8 @@ export class LidService {
         reason_lid_id:true,
         stage_id:true,
         target_id:true,
-        students:true
+        students:true,
+        trial_lesson_group_id:true
 
       }
       ,

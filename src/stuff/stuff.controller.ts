@@ -11,10 +11,11 @@ export class StuffController {
   constructor(private readonly stuffService: StuffService) {}
 
   @Post("signUp")
-  create(@Body() createStuffDto: CreateStuffDto,
-  @Res({ passthrough: true }) res: Response) {
-    return this.stuffService.create(createStuffDto,res);
+  create(@Body() createStuffDto: CreateStuffDto)
+   {
+    return this.stuffService.create(createStuffDto);
   }
+  
   @HttpCode(200)
   @Post('signIn')
   async login(

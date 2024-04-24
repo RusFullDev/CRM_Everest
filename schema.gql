@@ -1,0 +1,33 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+input CreateTargetDto {
+  name: String
+}
+
+type Lid {
+  first_name: String!
+  id: ID!
+}
+
+type Mutation {
+  createTarget(createTarget: CreateTargetDto!): Target!
+  removeTarget(id: ID!): ID!
+  updateTarget(id: ID!, updateTarget: UpdateTargetDto!): Target!
+}
+
+type Query {
+  findAllTarget: [Target!]!
+  findOneTarget(id: ID!): Target!
+}
+
+type Target {
+  id: ID!
+  name: String!
+  targets: [Lid!]!
+}
+
+input UpdateTargetDto {
+  name: String
+}
