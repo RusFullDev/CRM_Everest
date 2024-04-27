@@ -1,13 +1,14 @@
 
 
 
-import { Field, ObjectType } from "@nestjs/graphql"
+import { Field, InputType, Int, ObjectType } from "@nestjs/graphql"
 
-@ObjectType()
+@InputType()
 export class UpdateStuffRoleDto  {
-    @Field()
+
+    @Field(()=>Int,{nullable:true})
     roleId?:object
     
-    @Field()
+    @Field(()=>Int,{nullable:true})
     stuffId?:object
 }

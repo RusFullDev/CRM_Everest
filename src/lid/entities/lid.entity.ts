@@ -31,7 +31,7 @@ export class Lid {
     @Field(()=>Target)
     target_id:Target
 
-    @Field()
+   
     @ManyToOne(()=>Stage,(data)=>data.stages)
     @Field(()=>Stage)
      stage_id:Stage
@@ -49,7 +49,7 @@ export class Lid {
     trial_lesson_time:string
 
     
-    @Column()
+    
     @ManyToOne(()=>Group,(data)=>data.groupLids)
     @Field(()=>Group)
     trial_lesson_group_id:Group

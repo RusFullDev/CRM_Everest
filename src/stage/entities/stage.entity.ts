@@ -14,6 +14,7 @@ export class Stage {
     @Column()
     name:string
 
+ 
     @OneToMany(()=>Lid,(data)=>data.stage_id)
     @Field(()=>[Lid])
     stages:Lid[]

@@ -1,25 +1,26 @@
 
 
 
-import { Field, ObjectType } from "@nestjs/graphql"
+import { Field, InputType, Int, } from "@nestjs/graphql"
 
-@ObjectType()
+@InputType()
 export class UpdateStudentDto {
-    @Field()
+    
+    @Field(()=>Int,{nullable:true})
     lid_id?:object
 
-    @Field()
+    @Field({nullable:true})
     first_name?:string
 
-    @Field()
+    @Field({nullable:true})
     last_name?:string
     
-    @Field()
+    @Field({nullable:true})
     phone_number?:string
 
-    @Field()
+    @Field({nullable:true})
     bith_date?:string
     
-    @Field()
+    @Field({nullable:true})
     gender?:string
 }

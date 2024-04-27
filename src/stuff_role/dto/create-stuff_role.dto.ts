@@ -1,9 +1,11 @@
-import { Field, ObjectType } from "@nestjs/graphql"
+import { Field, InputType, Int, ObjectType } from "@nestjs/graphql"
 
-@ObjectType()
+@InputType()
 export class CreateStuffRoleDto {
-    @Field()
+    
+    @Field(()=>Int)
     roleId:object
-    @Field()
+
+    @Field(()=>Int)
     stuffId:object
 }

@@ -1,12 +1,14 @@
 
-import { Field, ObjectType } from "@nestjs/graphql"
+import { Field, InputType, ObjectType } from "@nestjs/graphql"
 
-@ObjectType()
+@InputType()
 export class UpdateBranchDto {
-    @Field()
+    @Field({nullable:true})
     name?:string
-    @Field()
+
+    @Field({nullable:true})
     address?:string
-    @Field()
+
+    @Field({nullable:true})
     call_number?:string
 }

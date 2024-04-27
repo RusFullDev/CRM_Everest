@@ -7,6 +7,7 @@ import { Column, Entity, JoinTable, ManyToMany, OneToMany, PrimaryGeneratedColum
 @ObjectType()
 @Entity()
 export class Stuff {
+    
     @Field(()=>ID)
     @PrimaryGeneratedColumn()
     id:number
@@ -46,6 +47,6 @@ export class Stuff {
 
     @OneToMany(()=>GroupStuff,(data)=>data.stuff_id)
     @Field(()=>[GroupStuff])
-        stuffGroup:GroupStuff[]
+    stuffGroup:GroupStuff[]
 
 }

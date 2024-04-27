@@ -1,10 +1,11 @@
 
-import { Field, ObjectType } from "@nestjs/graphql"
+import { Field, InputType, Int, ObjectType } from "@nestjs/graphql"
 
-@ObjectType()
+@InputType()
 export class UpdateGroupStuffDto {
-    @Field()
+    @Field(()=>Int,{nullable:true})
     group_id?:object
-    @Field()
+
+    @Field(()=>Int,{nullable:true})
     stuff_id?:object
 }

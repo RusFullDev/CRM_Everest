@@ -1,9 +1,10 @@
 
 
-import { Field, ObjectType } from "@nestjs/graphql";
+import { Field, InputType, ObjectType } from "@nestjs/graphql";
 
-@ObjectType()
+@InputType()
 export class UpdateRoleDto {
-    @Field()
+    
+    @Field({nullable:true})
     name?:string
 }

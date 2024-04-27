@@ -1,21 +1,27 @@
 
 
 
-import { Field, ObjectType } from "@nestjs/graphql"
+import { Field, InputType, ObjectType } from "@nestjs/graphql"
 
-@ObjectType()
+@InputType()
 export class UpdateStuffDto {
-    @Field()
+    
+    @Field({nullable:true})
     first_name?:string
-    @Field()
+    
+    @Field({nullable:true})
     last_name?:string
-    @Field()
+
+    @Field({nullable:true})
     phone_number?:string
-    @Field()
+
+    @Field({nullable:true})
     login?:string
-    @Field()
+
+    @Field({nullable:true})
     parol?:string
-    @Field()
+
+    @Field({nullable:true})
     confirm_parol?:string
       
 }

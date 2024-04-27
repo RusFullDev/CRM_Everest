@@ -1,17 +1,23 @@
-import { Field, ObjectType } from "@nestjs/graphql"
+import { Field, InputType, Int, ObjectType } from "@nestjs/graphql"
 
-@ObjectType()
+@InputType()
 export class CreatePaymentDto {
-    @Field()
+
+    @Field(()=>Int)
     student_id:object
+
     @Field()
     payment_last_date:Date
+
     @Field()
     payment_date:Date
+
     @Field()
     price:number
+
     @Field()
     is_paid:boolean
+
     @Field()
     total_payment:number
 }

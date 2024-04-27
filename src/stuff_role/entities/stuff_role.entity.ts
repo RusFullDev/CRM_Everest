@@ -7,6 +7,7 @@ import {  Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 @ObjectType()
 @Entity()
 export class StuffRole {
+    
     @Field(()=>ID)
     @PrimaryGeneratedColumn()
     id:number

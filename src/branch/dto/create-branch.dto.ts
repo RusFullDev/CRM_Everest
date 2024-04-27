@@ -1,6 +1,6 @@
-import { Field, ObjectType } from "@nestjs/graphql"
+import { Field, InputType, } from "@nestjs/graphql"
 
-@ObjectType()
+@InputType()
 export class CreateBranchDto {
     @Field()
     name:string

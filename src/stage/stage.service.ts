@@ -14,7 +14,11 @@ export class StageService {
   }
 
   findAll() {
-    return this.stageRepo.find({relations:{stages:true,group_stages:true}})
+    return this.stageRepo.find({
+      relations:{
+        // stages:true,
+        group_stages:true
+      }})
   }
 
   findOne(id: number) {

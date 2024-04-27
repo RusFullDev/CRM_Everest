@@ -1,9 +1,11 @@
-import { Field, ObjectType } from "@nestjs/graphql"
+import { Field, InputType, Int, ObjectType } from "@nestjs/graphql"
 
-@ObjectType()
+@InputType()
 export class CreateStudentGroupDto {
-    @Field()
+    
+    @Field(()=>Int)
     student_id:object
-    @Field()
+
+    @Field(()=>Int)
     group_id:object
 }

@@ -1,28 +1,38 @@
 
 
-import { Field, ObjectType } from "@nestjs/graphql"
+import { Field, InputType, Int, ObjectType } from "@nestjs/graphql"
 
-@ObjectType()
+@InputType()
 export class UpdateGroupDto  {
-    @Field()
+
+    @Field({nullable:true})
     group_name?:string
-    @Field()
+
+    @Field({nullable:true})
     lesson_start_time?:string
-    @Field()
+
+    @Field({nullable:true})
     lesson_continuous?:string
-    @Field()
+
+    @Field({nullable:true})
     lesson_week_day?:string
-    @Field()
+
+   @Field(()=>Int,{nullable:true})
     group_stage_id?:object
-    @Field()
+
+    @Field({nullable:true})
     room_number?:number
-    @Field()
+
+    @Field({nullable:true})
     room_floor?:number
-    @Field()
+
+    @Field(()=>Int,{nullable:true})
     branch_id?:object
-    @Field()
+
+    @Field({nullable:true})
     lessons_quant?:number
-    @Field()
+
+    @Field({nullable:true})
     is_active?:boolean
 
 }

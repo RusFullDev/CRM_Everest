@@ -1,18 +1,22 @@
 
 
 
-import { Field, ObjectType } from "@nestjs/graphql"
+import { Field, ID, InputType, Int, ObjectType } from "@nestjs/graphql"
 
-@ObjectType()
+@InputType()
 export class UpdateStudentLessonDto {
-    @Field()
+    @Field(()=>Int,{nullable:true})
     lesson_id?:object
-    @Field()
+
+    @Field(()=>Int,{nullable:true})
     student_id?:object
-    @Field()
+
+    @Field({nullable:true})
     is_there?:boolean
-    @Field()
+
+    @Field({nullable:true})
     reason?:string
-    @Field()
+    
+    @Field({nullable:true})
     be_paid?:boolean
 }

@@ -1,8 +1,9 @@
 
-import { Field, ObjectType } from "@nestjs/graphql";
+import { Field, InputType, ObjectType } from "@nestjs/graphql";
 
-@ObjectType()
+@InputType()
 export class UpdateLidStatusDto {
-    @Field()
+    
+    @Field({nullable:true})
     status?:string
 }

@@ -2,30 +2,432 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+type Branch {
+  address: String!
+  branches: [Group!]!
+  call_number: String!
+  id: ID!
+  name: String!
+}
+
+input CreateBranchDto {
+  address: String!
+  call_number: String!
+  name: String!
+}
+
+input CreateGroupDto {
+  branch_id: Int!
+  group_name: String!
+  group_stage_id: Int!
+  is_active: Boolean!
+  lesson_continuous: String!
+  lesson_start_time: String!
+  lesson_week_day: String!
+  lessons_quant: Float!
+  room_floor: Float!
+  room_number: Float!
+}
+
+input CreateGroupStuffDto {
+  group_id: Int!
+  stuff_id: Int!
+}
+
+input CreateLessonDto {
+  group_id: Int!
+  lesson_date: DateTime!
+  lesson_number: Float!
+  lesson_theme: String!
+}
+
+input CreateLidDto {
+  first_name: String!
+  last_name: String!
+  lid_stage_id: Int!
+  lid_status_id: Int!
+  phone_number: String!
+  reason_lid_id: Int!
+  target_id: Int!
+  test_date: DateTime!
+  trial_lesson_date: DateTime!
+  trial_lesson_group_id: Int!
+  trial_lesson_time: String!
+}
+
+input CreateLidStatusDto {
+  status: String!
+}
+
+input CreateReasonLidDto {
+  reason_lid: Int!
+}
+
+input CreateRoleDto {
+  name: String!
+}
+
+input CreateStageDto {
+  name: String!
+}
+
+input CreateStudentDto {
+  bith_date: String!
+  first_name: String!
+  gender: String!
+  last_name: String!
+  lid_id: Int!
+  phone_number: String!
+}
+
+input CreateStudentGroupDto {
+  group_id: Int!
+  student_id: Int!
+}
+
+input CreateStudentLessonDto {
+  be_paid: Boolean!
+  is_there: Boolean!
+  lesson_id: Int!
+  reason: String!
+  student_id: Int!
+}
+
+input CreateStuffDto {
+  confirm_parol: String!
+  first_name: String!
+  last_name: String!
+  login: String!
+  parol: String!
+  phone_number: String!
+}
+
+input CreateStuffRoleDto {
+  roleId: Int!
+  stuffId: Int!
+}
+
 input CreateTargetDto {
   name: String
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type Group {
+  branch_id: Branch!
+  groupLids: [Lid!]!
+  groupStuffs: [GroupStuff!]!
+  group_name: String!
+  group_stage_id: Stage!
+  id: ID!
+  is_active: Boolean!
+  lesson_continuous: String!
+  lesson_start_time: String!
+  lesson_week_day: String!
+  lessons: [Lesson!]!
+  lessons_quant: Float!
+  room_floor: Float!
+  room_number: Float!
+  studentGroup: [StudentGroup!]!
+}
+
+type GroupStuff {
+  group_id: Group!
+  id: ID!
+  stuff_id: Stuff!
+}
+
+type Lesson {
+  group_id: Group!
+  id: ID!
+  lesson_date: DateTime!
+  lesson_number: Float!
+  lesson_theme: String!
+  studentLessons: [StudentLesson!]!
 }
 
 type Lid {
   first_name: String!
   id: ID!
+  last_name: String!
+  lid_status_id: LidStatus!
+  phone_number: String!
+  reason_lid_id: ReasonLid!
+  stage_id: Stage!
+  students: Student!
+  target_id: Target!
+  test_date: DateTime!
+  trial_lesson_date: DateTime!
+  trial_lesson_group_id: Group!
+  trial_lesson_time: String!
+}
+
+type LidStatus {
+  id: ID!
+  lidStatus: [Lid!]!
+  status: String!
 }
 
 type Mutation {
+  createBranch(createBranch: CreateBranchDto!): Branch!
+  createGroup(creategroup: CreateGroupDto!): Group!
+  createGroupStuff(createGroupStuff: CreateGroupStuffDto!): GroupStuff!
+  createLesson(createLesson: CreateLessonDto!): Lesson!
+  createLid(CreateLids: CreateLidDto!): Lid!
+  createLidStatus(createLidStatus: CreateLidStatusDto!): LidStatus!
+  createReasonLid(createReasonLid: CreateReasonLidDto!): ReasonLid!
+  createRole(createRole: CreateRoleDto!): Role!
+  createStage(createStage: CreateStageDto!): Stage!
+  createStudent(createStudent: CreateStudentDto!): Student!
+  createStudentGroup(createStudentGroup: CreateStudentGroupDto!): StudentGroup!
+  createStudentLesson(createStudentLesson: CreateStudentLessonDto!): StudentLesson!
+  createStuff(createStuff: CreateStuffDto!): Stuff!
+  createStuffRole(createStuffRole: CreateStuffRoleDto!): StuffRole!
   createTarget(createTarget: CreateTargetDto!): Target!
+  removeBranch(id: ID!): Branch!
+  removeGroup(id: ID!): Group!
+  removeGroupStuff(id: ID!): GroupStuff!
+  removeLesson(id: ID!): Lesson!
+  removeLid(id: ID!): Lid!
+  removeLidStatus(id: ID!): LidStatus!
+  removeReasonLid(id: ID!): ReasonLid!
+  removeRole(id: ID!): Role!
+  removeStage(id: ID!): Stage!
+  removeStudent(id: ID!): Student!
+  removeStudentGroup(id: ID!): StudentGroup!
+  removeStudentLesson(id: ID!): StudentLesson!
+  removeStuff(id: ID!): Stuff!
+  removeStuffRole(id: ID!): StuffRole!
   removeTarget(id: ID!): ID!
+  updateBranch(id: ID!, updateBranch: UpdateBranchDto!): Branch!
+  updateGroup(id: ID!, updateGroup: UpdateGroupDto!): Group!
+  updateGroupStuff(id: ID!, updateGroupStuff: UpdateGroupStuffDto!): GroupStuff!
+  updateLesson(id: ID!, updateLesson: UpdateLessonDto!): Lesson!
+  updateLid(id: ID!, updateLid: UpdateLidDto!): Lid!
+  updateLidStatus(id: ID!, updateLidStatus: UpdateLidStatusDto!): LidStatus!
+  updateReasonLid(id: ID!, updateReasonLid: UpdateReasonLidDto!): ReasonLid!
+  updateRole(id: ID!, updateRole: UpdateRoleDto!): Role!
+  updateStage(id: ID!, updateStage: UpdateStageDto!): Stage!
+  updateStudent(id: ID!, updateStudent: UpdateStudentDto!): Student!
+  updateStudentGroup(id: ID!, updateStudentGroup: UpdateStudentGroupDto!): StudentGroup!
+  updateStudentLesson(id: ID!, updateStudentLesson: UpdateStudentLessonDto!): StudentLesson!
+  updateStuff(id: ID!, updateStuff: UpdateStuffDto!): Stuff!
+  updateStuffRole(id: ID!, updateStuffRole: UpdateStuffRoleDto!): StuffRole!
   updateTarget(id: ID!, updateTarget: UpdateTargetDto!): Target!
 }
 
+type Payment {
+  id: ID!
+  is_paid: Boolean!
+  payment_date: DateTime!
+  payment_last_date: DateTime!
+  price: Float!
+  student_id: Student!
+  total_payment: Float!
+}
+
 type Query {
+  findAll: [Branch!]!
+  findAllGroup: [Group!]!
+  findAllGroupStuff: [GroupStuff!]!
+  findAllLesson: [Lesson!]!
+  findAllLid: [Lid!]!
+  findAllLidStatus: [LidStatus!]!
+  findAllReasonLid: [ReasonLid!]!
+  findAllStage: [Stage!]!
+  findAllStudent: [Student!]!
+  findAllStudentGroup: [StudentGroup!]!
+  findAllStudentLesson: [StudentLesson!]!
+  findAllStuff: [Stuff!]!
+  findAllStuffRole: [StuffRole!]!
   findAllTarget: [Target!]!
+  findOneBranch(id: ID!): Branch!
+  findOneGroup(id: ID!): Group!
+  findOneGroupStuff(id: ID!): GroupStuff!
+  findOneLesson(id: ID!): Lesson!
+  findOneLid(id: ID!): Lid!
+  findOneLidStatus(id: ID!): LidStatus!
+  findOneReasonLid(id: ID!): ReasonLid!
+  findOneRole(id: ID!): Role!
+  findOneStage(id: ID!): Stage!
+  findOneStudent(id: ID!): Student!
+  findOneStudentGroup(id: ID!): StudentGroup!
+  findOneStudentLesson(id: ID!): StudentLesson!
+  findOneStuff(id: ID!): Stuff!
+  findOneStuffRole(id: ID!): StuffRole!
   findOneTarget(id: ID!): Target!
+}
+
+type ReasonLid {
+  id: ID!
+  reason_lid: String!
+  reasons_lid: [Lid!]!
+}
+
+type Role {
+  id: ID!
+  name: String!
+  stuffes: [StuffRole!]!
+}
+
+type Stage {
+  group_stages: [Group!]!
+  id: ID!
+  name: String!
+  stages: [Lid!]!
+}
+
+type Student {
+  bith_date: String!
+  first_name: String!
+  gender: String!
+  id: ID!
+  last_name: String!
+  lid_id: Lid!
+  payments: [Payment!]!
+  phone_number: String!
+  studentGroups: [StudentGroup!]!
+  studentsLessons: [StudentLesson!]!
+}
+
+type StudentGroup {
+  group_id: Group!
+  id: ID!
+  student_id: Student!
+}
+
+type StudentLesson {
+  be_paid: Boolean!
+  id: ID!
+  is_there: Boolean!
+  lesson_id: Lesson!
+  reason: String!
+  student_id: Student!
+}
+
+type Stuff {
+  first_name: String!
+  hashed_parol: String!
+  hashed_refresh_token: String!
+  id: ID!
+  is_active: Boolean!
+  last_name: String!
+  login: String!
+  phone_number: String!
+  stuffGroup: [GroupStuff!]!
+  stuffRoles: [StuffRole!]!
+}
+
+type StuffRole {
+  id: ID!
+  roleId: Role!
+  stuffId: Stuff!
 }
 
 type Target {
   id: ID!
   name: String!
   targets: [Lid!]!
+}
+
+input UpdateBranchDto {
+  address: String
+  call_number: String
+  name: String
+}
+
+input UpdateGroupDto {
+  branch_id: Int
+  group_name: String
+  group_stage_id: Int
+  is_active: Boolean
+  lesson_continuous: String
+  lesson_start_time: String
+  lesson_week_day: String
+  lessons_quant: Float
+  room_floor: Float
+  room_number: Float
+}
+
+input UpdateGroupStuffDto {
+  group_id: Int
+  stuff_id: Int
+}
+
+input UpdateLessonDto {
+  group_id: Int
+  lesson_date: DateTime
+  lesson_number: Float
+  lesson_theme: String
+}
+
+input UpdateLidDto {
+  first_name: String
+  last_name: String
+  lid_stage_id: Int
+  lid_status_id: Int
+  phone_number: String
+  reason_lid_id: Int
+  target_id: Int
+  test_date: DateTime
+  trial_lesson_date: DateTime
+  trial_lesson_group_id: Int
+  trial_lesson_time: String
+}
+
+input UpdateLidStatusDto {
+  status: String
+}
+
+input UpdateReasonLidDto {
+  reason_lid: Int
+}
+
+input UpdateRoleDto {
+  name: String
+}
+
+input UpdateStageDto {
+  name: String
+}
+
+input UpdateStudentDto {
+  bith_date: String
+  first_name: String
+  gender: String
+  last_name: String
+  lid_id: Int
+  phone_number: String
+}
+
+input UpdateStudentGroupDto {
+  group_id: Int
+  student_id: Int
+}
+
+input UpdateStudentLessonDto {
+  be_paid: Boolean
+  is_there: Boolean
+  lesson_id: Int
+  reason: String
+  student_id: Int
+}
+
+input UpdateStuffDto {
+  confirm_parol: String
+  first_name: String
+  last_name: String
+  login: String
+  parol: String
+  phone_number: String
+}
+
+input UpdateStuffRoleDto {
+  roleId: Int
+  stuffId: Int
 }
 
 input UpdateTargetDto {
